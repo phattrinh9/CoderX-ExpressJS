@@ -1,0 +1,10 @@
+h1 User
+a(href='/users/create') Tao user moi
+form(action='/users/search' method='get')
+    input(type='text' name='searchString' value=name)
+    button Search
+ul 
+    each user in users
+        li=user.name
+         span &nbsp;
+         a(href='/users/'+user.id) View
