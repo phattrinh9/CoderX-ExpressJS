@@ -1,6 +1,6 @@
 const  express  = require("express");
 var db=require('../db')
-var shortid=require('shortid')
+
 var controller=require('../controllers/user.controller')
 
 var router=express.Router();
@@ -19,7 +19,7 @@ router.get('/search',(req,res)=>{
   
   res.render('users/index',{
     users:matcheUsers,
-    name:searchString
+    searchString:searchString
   })
 })
   
@@ -27,7 +27,7 @@ router.get('/search',(req,res)=>{
 router.get('/create', (req,res)=>{
   res.render('users/create')
 })
-  
+
 router.get('/:id', (req,res)=>{
   var id=req.params.id;
   var user=db.get('users').find({id:id}).value()

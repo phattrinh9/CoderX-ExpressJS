@@ -8,11 +8,15 @@ const port = 3000
 
 const app = express()
 
+app.use(express.static('public'))
+
 app.set('view engine', 'pug')
 //ooapp.set('views', './views')
 app.get('/', (req, res) => {
   res.render('index',{name:'AAA'})
 })
+
+
 
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded

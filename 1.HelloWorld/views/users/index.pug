@@ -1,13 +1,30 @@
 extends ../layouts/common
 
-block content    
-    h1 User
-    a(href='/users/create') Tao user moi
+block content   
+    .inline-block
+        h3.d-inline User
+        span &nbsp
+        a.d-inline.btn.btn-primary(href='/users/create' role='button') New
+    br
     form(action='/users/search' method='get')
-        input(type='text' name='searchString' value=name)
-        button Search
-    ul 
-        each user in users
-            li=user.name
-            span &nbsp;
-            a(href='/users/'+user.id) View
+        .input-group
+            input.form-control(type='text' placeholder='Search' name='searchString' aria-label='searchString' aria-describedby='basic-addon1' value=searchString)
+            .input-group-append
+                button.btn.btn-outline-success(type='submit') Search
+    table.table.table-striped
+        thead
+            tr
+            th(scope='col') ID
+            th(scope='col') Name
+            th(scope='col') Email
+            th(scope='col') Phone
+            th(scope='col')
+        tbody
+            each user in users
+                tr
+                th(scope='row')=user.id
+                td=user.name
+                td=user.email
+                td=user.phone
+                td
+                    a(href='/users/'+user.id) View

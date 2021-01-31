@@ -1,3 +1,18 @@
-form(action='/users/create' method='post')
-    input(type='text' name='name')
-    button(type='submit') Add
+extends ../../layouts/common
+
+block content
+    form(action='/users/create' method='post')
+        h2 Tạo Khách Hàng Mới
+        if (errors) 
+            each error in errors
+                .alert.alert-danger=error
+        .form-floating.mb-3
+            input#floatingInput.form-control.col-sm-6(type='text' placeholder='Trần Vui' name='name' value=values ? values.name :"")
+            label(for='floatingInput') Name
+        .form-floating.mb-3
+            input#floatingInput.form-control.col-sm-6(type='email' placeholder='name@example.com' name='email' value=values ? values.email :"")
+            label(for='floatingInput') Email 
+        .form-floating.mb-3
+            input#floatingInput.form-control.col-sm-6(type='phone' placeholder='01211111111' name='phone' value=values ? values.phone :"")
+            label(for='floatingInput') Phone
+        button.btn.btn-outline-success(type='submit') Add

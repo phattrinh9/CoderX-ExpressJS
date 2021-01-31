@@ -1,7 +1,18 @@
 extends ../layouts/common
-
+block head
+    link(href="/style.css", rel="stylesheet")
 block content
-    h1 view
-    p User: 
-        span= user.name
-        
+    h1 view user
+    table.table.table-striped
+        tbody
+            tr
+                th.col-sm-2(scope='row') Tên
+                td=user.name
+            tr
+                th.col-sm-2(scope='row') Email
+                td=user.email
+            tr
+                th.col-sm-2(scope='row') Số điện thoại
+                td=user.phone
+    
+            
