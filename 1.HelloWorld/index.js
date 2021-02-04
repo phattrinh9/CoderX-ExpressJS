@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 //const { generate } = require('shortid')
 var bodyParser = require('body-parser')
@@ -11,7 +12,7 @@ const port = 3000
 const app = express()
 
 app.use(express.static('public'))
-app.use(cookieParser('asdasd123qwe_a#adgnjsncu1209'));
+app.use(cookieParser('process.env.SESSION_SECRET'));
 app.set('view engine', 'pug')
 //ooapp.set('views', './views')
 app.get('/', (req, res) => {
