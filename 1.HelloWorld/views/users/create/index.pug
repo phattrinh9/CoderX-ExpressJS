@@ -1,18 +1,23 @@
 extends ../../layouts/common
 
 block content
-    form(action='/users/create' method='post')
-        h2 Tạo Khách Hàng Mới
+    h2 Tạo Khách Hàng Mới
         if (errors) 
             each error in errors
                 .alert.alert-danger=error
+    form(action='/users/create' method='post' enctype="multipart/form-data")
+        
         .form-floating.mb-3
             input#floatingInput.form-control.col-sm-6(type='text' placeholder='Trần Vui' name='name' value=values ? values.name :"")
             label(for='floatingInput') Name
         .form-floating.mb-3
-            input#floatingInput.form-control.col-sm-6(type='email' placeholder='name@example.com' name='email' value=values ? values.email :"")
+            input#floatingInpYut.form-control.col-sm-6(type='email' placeholder='name@example.com' name='email' value=values ? values.email :"")
             label(for='floatingInput') Email 
         .form-floating.mb-3
             input#floatingInput.form-control.col-sm-6(type='phone' placeholder='01211111111' name='phone' value=values ? values.phone :"")
             label(for='floatingInput') Phone
+        .form-floating.mb-3
+            label.form-label(for='avatar') Chọn ảnh đại diện
+            input#customFile.form-control-file(type='file' name='avatar')
+
         button.btn.btn-outline-success(type='submit') Add

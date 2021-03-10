@@ -1,0 +1,16 @@
+extends ../layouts/common
+block head
+   
+    link(href='/product.css' rel='stylesheet')
+    
+block content
+    each product in products
+        .col-md-2.column.productbox
+            img.img-responsive(src=product.linkImage)
+            .producttitle #{product.name}
+            .productprice
+                .pull-right
+                a.btn.btn-danger.btn-sm(href='/cart/add/'+product.id role='button') BUY
+                .pricetext &dollar; #{product.price}
+   
+        
